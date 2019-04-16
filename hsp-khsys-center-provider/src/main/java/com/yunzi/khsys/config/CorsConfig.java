@@ -1,4 +1,4 @@
-package com.deepexi.trade.config;
+package com.yunzi.khsys.config;
 
 
 import org.springframework.context.annotation.Bean;
