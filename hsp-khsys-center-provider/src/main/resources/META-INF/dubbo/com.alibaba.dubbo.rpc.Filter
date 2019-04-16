@@ -1,0 +1,3 @@
+exceptionFilter=com.yunzi.khsys.filter.ExceptionFilter
+dubboContextProviderFilter=com.yunzi.khsys.filter.DubboContextProviderFilter
+dubboContextConsumerFilter=com.yunzi.khsys.filter.DubboContextConsumerFilter

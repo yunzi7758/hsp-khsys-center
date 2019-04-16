@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--客户映射 指定到dao接口 -->
+<mapper namespace="com.yunzi.khsys.mapper.CreditScheduleMapper">
+
+	<select id="findList" resultType="com.yunzi.khsys.domain.eo.CreditSchedule">
+		SELECT * FROM custom_credit_schedule t1 WHERE 1=1
+
+		<if test="!eo.izRoot">
+			<if test="eo.dr == null    ">
+				AND t1.dr = 0
+			</if>
+			<if test="eo.tenantCode != null  and eo.tenantCode != ''   ">
+				AND t1.tenant_code = #{ eo.tenantCode ,jdbcType=VARCHAR }
+			</if>
+			<if test="eo.dr != null  and eo.dr != ''   ">
+				AND t1.dr = #{ eo.dr ,jdbcType=TINYINT }
+			</if>
+		</if>
+
+
+
+
+		<if test="eo.version != null  and eo.version != ''   ">
+			AND t1.version = #{ eo.version ,jdbcType=TINYINT }
+		</if>
+		<if test="eo.createdBy != null  and eo.createdBy != ''   ">
+			AND t1.created_by = #{ eo.createdBy ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.createdAt != null  and eo.createdAt != ''   ">
+			AND t1.created_at = #{ eo.createdAt ,jdbcType=TIMESTAMP }
+		</if>
+		<if test="eo.updatedBy != null  and eo.updatedBy != ''   ">
+			AND t1.updated_by = #{ eo.updatedBy ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.updatedAt != null  and eo.updatedAt != ''   ">
+			AND t1.updated_at = #{ eo.updatedAt ,jdbcType=TIMESTAMP }
+		</if>
+		<if test="eo.id != null  and eo.id != ''   ">
+			AND t1.id = #{ eo.id ,jdbcType=VARCHAR }
+		</if>
+
+		<if test="eo.remark1 != null  and eo.remark1 != ''   ">
+			AND t1.remark1 = #{ eo.remark1 ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.remark2 != null  and eo.remark2 != ''   ">
+			AND t1.remark2 = #{ eo.remark2 ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.remark3 != null  and eo.remark3 != ''   ">
+			AND t1.remark3 = #{ eo.remark3 ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.customId != null  and eo.customId != ''   ">
+			AND t1.custom_id = #{ eo.customId ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.customName != null  and eo.customName != ''   ">
+			AND t1.custom_name = #{ eo.customName ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.busineserId != null  and eo.busineserId != ''   ">
+			AND t1.busineser_id = #{ eo.busineserId ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.busineserName != null  and eo.busineserName != ''   ">
+			AND t1.busineser_name = #{ eo.busineserName ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.amount != null  and eo.amount != ''   ">
+			AND t1.amount = #{ eo.amount ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.dot != null  and eo.dot != ''   ">
+			AND t1.dot = #{ eo.dot ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.bankName != null  and eo.bankName != ''   ">
+			AND t1.bank_name = #{ eo.bankName ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.notes != null  and eo.notes != ''   ">
+			AND t1.notes = #{ eo.notes ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.readyDetail != null  and eo.readyDetail != ''   ">
+			AND t1.ready_detail = #{ eo.readyDetail ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.bankProgress != null  and eo.bankProgress != ''   ">
+			AND t1.bank_progress = #{ eo.bankProgress ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.bankAmountTime != null  and eo.bankAmountTime != ''   ">
+			AND t1.bank_amount_time = #{ eo.bankAmountTime ,jdbcType=TIMESTAMP }
+		</if>
+		<if test="eo.dkSystem != null  and eo.dkSystem != ''   ">
+			AND t1.dk_system = #{ eo.dkSystem ,jdbcType=VARCHAR }
+		</if>
+
+        ORDER BY t1.created_at DESC
+	</select>
+
+	<update id="deleteByIds">
+		UPDATE custom_credit_schedule set dr=1 where id in
+		<foreach collection="pks" index="index" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+
+
+</mapper>

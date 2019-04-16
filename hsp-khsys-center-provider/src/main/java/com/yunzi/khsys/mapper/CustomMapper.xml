@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--客户映射 指定到dao接口 -->
+<mapper namespace="com.yunzi.khsys.mapper.CustomMapper">
+
+	<select id="findList" resultType="com.yunzi.khsys.domain.eo.Custom">
+		SELECT * FROM custom_custom t1 WHERE 1=1
+
+		<if test="!eo.izRoot">
+			<if test="eo.dr == null    ">
+				AND t1.dr = 0
+			</if>
+			<if test="eo.tenantCode != null  and eo.tenantCode != ''   ">
+				AND t1.tenant_code = #{ eo.tenantCode ,jdbcType=VARCHAR }
+			</if>
+			<if test="eo.dr != null  and eo.dr != ''   ">
+				AND t1.dr = #{ eo.dr ,jdbcType=TINYINT }
+			</if>
+		</if>
+
+
+		<if test="eo.version != null  and eo.version != ''   ">
+			AND t1.version = #{ eo.version ,jdbcType=TINYINT }
+		</if>
+		<if test="eo.createdBy != null  and eo.createdBy != ''   ">
+			AND t1.created_by = #{ eo.createdBy ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.createdAt != null  and eo.createdAt != ''   ">
+			AND t1.created_at = #{ eo.createdAt ,jdbcType=TIMESTAMP }
+		</if>
+		<if test="eo.updatedBy != null  and eo.updatedBy != ''   ">
+			AND t1.updated_by = #{ eo.updatedBy ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.updatedAt != null  and eo.updatedAt != ''   ">
+			AND t1.updated_at = #{ eo.updatedAt ,jdbcType=TIMESTAMP }
+		</if>
+		<if test="eo.id != null  and eo.id != ''   ">
+			AND t1.id = #{ eo.id ,jdbcType=VARCHAR }
+		</if>
+
+		<if test="eo.remark1 != null  and eo.remark1 != ''   ">
+			AND t1.remark1 = #{ eo.remark1 ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.remark2 != null  and eo.remark2 != ''   ">
+			AND t1.remark2 = #{ eo.remark2 ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.remark3 != null  and eo.remark3 != ''   ">
+			AND t1.remark3 = #{ eo.remark3 ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.type != null  and eo.type != ''   ">
+			AND t1.type = #{ eo.type ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.name != null  and eo.name != ''   ">
+			AND t1.name = #{ eo.name ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.mobilePhone != null  and eo.mobilePhone != ''   ">
+			AND t1.mobile_phone = #{ eo.mobilePhone ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.house != null  and eo.house != ''   ">
+			AND t1.house = #{ eo.house ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.houseDetail != null  and eo.houseDetail != ''   ">
+			AND t1.house_detail = #{ eo.houseDetail ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.conditions != null  and eo.conditions != ''   ">
+			AND t1.conditions = #{ eo.conditions ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.liability != null  and eo.liability != ''   ">
+			AND t1.liability = #{ eo.liability ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.mold != null  and eo.mold != ''   ">
+			AND t1.mold = #{ eo.mold ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.needTime != null  and eo.needTime != ''   ">
+			AND t1.need_time = #{ eo.needTime ,jdbcType=TIMESTAMP }
+		</if>
+		<if test="eo.problem != null  and eo.problem != ''   ">
+			AND t1.problem = #{ eo.problem ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.trancStatus != null  and eo.trancStatus != ''   ">
+			AND t1.tranc_status = #{ eo.trancStatus ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.managerName != null  and eo.managerName != ''   ">
+			AND t1.manager_name = #{ eo.managerName ,jdbcType=VARCHAR }
+		</if>
+
+		<if test="eo.managerId != null  and eo.managerId != ''   ">
+			AND t1.manager_id = #{ eo.managerId ,jdbcType=VARCHAR }
+		</if>
+
+        ORDER BY t1.created_at DESC
+	</select>
+
+	<update id="deleteByIds">
+		UPDATE custom_custom set dr=1 where id in
+		<foreach collection="pks" index="index" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+
+
+</mapper>

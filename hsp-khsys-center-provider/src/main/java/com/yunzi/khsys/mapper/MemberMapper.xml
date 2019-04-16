@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--客户映射 指定到dao接口 -->
+<mapper namespace="com.yunzi.khsys.mapper.MemberMapper">
+
+	<select id="findList" resultType="com.yunzi.khsys.domain.eo.Member">
+		SELECT * FROM custom_member t1 WHERE 1=1
+
+		<if test="!eo.izRoot">
+			<if test="eo.dr == null    ">
+				AND t1.dr = 0
+			</if>
+			<if test="eo.tenantCode != null  and eo.tenantCode != ''   ">
+				AND t1.tenant_code = #{ eo.tenantCode ,jdbcType=VARCHAR }
+			</if>
+			<if test="eo.dr != null  and eo.dr != ''   ">
+				AND t1.dr = #{ eo.dr ,jdbcType=TINYINT }
+			</if>
+		</if>
+
+
+		<if test="eo.version != null  and eo.version != ''   ">
+			AND t1.version = #{ eo.version ,jdbcType=TINYINT }
+		</if>
+		<if test="eo.createdBy != null  and eo.createdBy != ''   ">
+			AND t1.created_by = #{ eo.createdBy ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.createdAt != null  and eo.createdAt != ''   ">
+			AND t1.created_at = #{ eo.createdAt ,jdbcType=TIMESTAMP }
+		</if>
+		<if test="eo.updatedBy != null  and eo.updatedBy != ''   ">
+			AND t1.updated_by = #{ eo.updatedBy ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.updatedAt != null  and eo.updatedAt != ''   ">
+			AND t1.updated_at = #{ eo.updatedAt ,jdbcType=TIMESTAMP }
+		</if>
+		<if test="eo.id != null  and eo.id != ''   ">
+			AND t1.id = #{ eo.id ,jdbcType=VARCHAR }
+		</if>
+
+		<if test="eo.remark1 != null  and eo.remark1 != ''   ">
+			AND t1.remark1 = #{ eo.remark1 ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.remark2 != null  and eo.remark2 != ''   ">
+			AND t1.remark2 = #{ eo.remark2 ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.remark3 != null  and eo.remark3 != ''   ">
+			AND t1.remark3 = #{ eo.remark3 ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.username != null  and eo.username != ''   ">
+			AND t1.username = #{ eo.username ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.psw != null  and eo.psw != ''   ">
+			AND t1.psw = #{ eo.psw ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.role != null  and eo.role != ''   ">
+			AND t1.role = #{ eo.role ,jdbcType=VARCHAR }
+		</if>
+		<if test="eo.status != null  and eo.status != ''   ">
+			AND t1.status = #{ eo.status ,jdbcType=VARCHAR }
+		</if>
+
+        ORDER BY t1.created_at DESC
+	</select>
+
+	<update id="deleteByIds">
+		UPDATE custom_member set dr=1 where id in
+		<foreach collection="pks" index="index" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+
+
+</mapper>
