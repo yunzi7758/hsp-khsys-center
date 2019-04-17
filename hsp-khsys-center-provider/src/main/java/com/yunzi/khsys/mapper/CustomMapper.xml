@@ -12,8 +12,9 @@
 				AND t1.dr = 0
 			</if>
 			<if test="eo.tenantCode != null  and eo.tenantCode != ''   ">
-				AND t1.tenant_code = #{ eo.tenantCode ,jdbcType=VARCHAR }
+				AND (t1.tenant_code = #{ eo.tenantCode ,jdbcType=VARCHAR } or t1.manager_id = #{ eo.tenantCode ,jdbcType=VARCHAR })
 			</if>
+
 			<if test="eo.dr != null  and eo.dr != ''   ">
 				AND t1.dr = #{ eo.dr ,jdbcType=TINYINT }
 			</if>
@@ -89,9 +90,7 @@
 			AND t1.manager_id = #{ eo.managerId ,jdbcType=VARCHAR }
 		</if>
 
-		<if test="eo.tenantCode != null  and eo.tenantCode != ''   ">
-			or t1.manager_id = #{ eo.tenantCode ,jdbcType=VARCHAR }
-		</if>
+
 
         ORDER BY t1.created_at DESC
 	</select>
