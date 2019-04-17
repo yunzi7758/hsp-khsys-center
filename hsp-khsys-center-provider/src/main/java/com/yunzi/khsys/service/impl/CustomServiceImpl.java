@@ -117,6 +117,7 @@ public class CustomServiceImpl implements CustomService {
     }
 
     private boolean insertNewCustom(Custom orig,Custom update) {
+/*
 
         Custom eo = new Custom();
 
@@ -129,17 +130,6 @@ public class CustomServiceImpl implements CustomService {
             eo.setBaseFeild("",orig.getManagerId());
         }
 
-//        eo.setType(orig.getType());
-//        eo.setName(orig.getName());
-//        eo.setMobilePhone(orig.getMobilePhone());
-//        eo.setHouse(orig.getHouse());
-//        eo.setHouseDetail(orig.getHouseDetail());
-//        eo.setConditions(orig.getConditions());
-//        eo.setLiability(orig.getLiability());
-//        eo.setMold(orig.getMold());
-//        eo.setNeedTime(orig.getNeedTime());
-//        eo.setProblem(orig.getProblem());
-//        eo.setTrancStatus(orig.getTrancStatus());
 
 
         eo.setManagerName("");
@@ -150,6 +140,7 @@ public class CustomServiceImpl implements CustomService {
             return true;
         }
 
+*/
 
         return false;
     }

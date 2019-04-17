@@ -89,6 +89,10 @@
 			AND t1.manager_id = #{ eo.managerId ,jdbcType=VARCHAR }
 		</if>
 
+		<if test="eo.tenantCode != null  and eo.tenantCode != ''   ">
+			or t1.manager_id = #{ eo.tenantCode ,jdbcType=VARCHAR }
+		</if>
+
         ORDER BY t1.created_at DESC
 	</select>
 
